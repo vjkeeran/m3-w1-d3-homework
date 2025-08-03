@@ -1,0 +1,21 @@
+section#blogposts
+    ul
+        li#posts(v-for="post in posts")
+            span.profile
+                img(:src="post.profilepic" @click="authorinfo(posts, post)" width="50" height="42" style="vertical-align: middle; margin-right: 1em; cursor: pointer;")
+            span.author {{ post.name }} — 
+            span.date {{ post.date }}
+            span.reply {{ post.reply }}
+            p {{ post.message }}
+        #info_box(v-for="post in posts" v-if="post.thisBox" style="position: absolute; top: 25%; left:30%; width: 30%; padding: 2em; color:rgb(255, 255, 255,1); border-radius: 1em; background-color: rgba(0, 0, 0, 0.9);")
+            p.closeBtn.closeBtnP(@click="$emit('close', post.thisBox = false)" style="position: absolute; right: 1.5em; top:0;") &#10006;
+            #info_title(style="font-size: 2em; font-weight: bolder; margin-bottom: 1em;") {{ post.name }}
+            #info_foodie 
+                span(style="font-weight: bolder; font-size: 1.15em;") Foodie Level: 
+                | {{ post.foodielevel }}
+            #info_bio 
+                span(style="font-weight: bolder; font-size: 1.15em;") Bio:
+                br
+                | {{ post.bio }}
+            button.closeBtn.closeBtnB(@click="$emit('close', post.thisBox = false)" style="width: 15%; bottom: 2em; position: absolute; background-color: white; border: none; box-sizing: border-box;") Close
+            p#close_info(style="text-transform: capitalize; width: 45%; text-align: center; margin: 5em auto 0 auto; font-weight: bold; color:rgb(250, 242, 132)")

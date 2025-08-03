@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    include components/header
+    main(style="position: relative;")
+        include components/sidebar
+        h2(style="position: absolute; left: 20%; top: 30px; margin: 25px 0 200px 50px; color:rgb(60, 190, 160); text-transform: uppercase;")
+            span comments
+        include components/blogposts
+    include components/footer
